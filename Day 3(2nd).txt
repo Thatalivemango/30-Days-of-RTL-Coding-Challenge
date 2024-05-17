@@ -1,0 +1,22 @@
+Prob:Create a module with the same functionality as the 7458 chip. It has 10 inputs and 2 outputs. You may choose to use an assign statement to drive each of the output wires, or you may choose to declare (four) wires for use as intermediate signals, where each internal wire is driven by the output of one of the AND gates.
+https://hdlbits.01xz.net/wiki/File:7458.png
+
+sol:
+module top_module ( 
+    input p1a, p1b, p1c, p1d, p1e, p1f,
+    output p1y,
+    input p2a, p2b, p2c, p2d,
+    output p2y );
+    wire i1,i2,i3,i4,i5,i6;
+    
+    assign i1= p2a & p2b;
+    assign i2= p2c & p2d;
+    assign i3 = p1a & p1c & p1b;
+    assign i4 = p1f & p1e & p1d;
+    assign i5 = i1 | i2;
+    assign i6 = i3 | i4;
+    assign p2y = i5;
+    assign p1y = i6;
+
+
+endmodule
