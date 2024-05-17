@@ -1,0 +1,6 @@
+Prob:Create a module that implements a NOT gate.
+
+Sol:
+module top_module( input in, output out );
+assign out=~in;
+endmodule
