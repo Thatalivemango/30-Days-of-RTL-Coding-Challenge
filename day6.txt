@@ -1,0 +1,18 @@
+Prob:Given several input vectors, concatenate them together then split them up into several output vectors. There are six 5-bit input vectors: a, b, c, d, e, and f, for a total of 30 bits of input. There are four 8-bit output vectors: w, x, y, and z, for 32 bits of output. The output should be a concatenation of the input vectors followed by two 1 bits:
+
+sol:
+module top_module (
+    input [4:0] a, b, c, d, e, f,
+    output [7:0] w, x, y, z
+);
+    // Concatenate the input vectors and the two 1-bits
+    wire [31:0] concatenated_input;
+    assign concatenated_input = {a, b, c, d, e, f, 2'b11};
+
+    // Split the 32-bit concatenated input into four 8-bit output vectors
+    assign w = concatenated_input[31:24];
+    assign x = concatenated_input[23:16];
+    assign y = concatenated_input[15:8];
+    assign z = concatenated_input[7:0];
+
+endmodule
